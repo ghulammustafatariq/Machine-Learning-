@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .form-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+  gap: 20px; /* space between */
+   /* adjust as needed */
+  margin: auto;
+}
+.form-item {
+  display: flex;
+  flex-direction: column; /* label above input */
+}
+.form-item label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-item input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+button {
+  grid-column: span 3; /* button spans all 3 columns */
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  ;
+}
+h2 {
+  text-align: center;
+  box-sizing: border-box;
+    background-color: #e2e2e2;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100%;
+}
+
+    
+</style>
+
+     
+<body>
+    <h1>Forset Weather Index</h1>
+    <form action="{{ url_for ('predict_data')}}" method="post">
+   <div class="form-container">
+  <div class="form-item">
+    <label>Temperature</label>
+    <input type="text" placeholder="Enter Temperature (2°C - 42°C)" name="Temperature" required>
+  </div>
+  <div class="form-item">
+    <label>Relative Humdity</label>
+    <input type="text" placeholder="Enter RH (21% - 90%)" name="RH" required>
+  </div>
+  <div class="form-item">
+    <label>Wind Speed</label>
+    <input type="text" placeholder="Enter WS (6 - 29 km/h)" name="Ws" required>
+  </div>
+  <div class="form-item">
+    <label>Rain</label>
+    <input type="text" placeholder="Enter Rain (0 - 16.8 mm)" name="Rain" required>
+  </div>
+  <div class="form-item">
+    <label>Fine Fuel Moisture Code</label>
+    <input type="text" placeholder="Enter FFMC (29.6 - 92.5)" name="FFMC" required>
+  </div>
+  <div class="form-item">
+    <label>Duff Moisture Code</label>
+    <input type="text" placeholder="Enter DMC (1.1 - 65.9)" name="DMC" required>
+  </div>
+  
+    
+  <div class="form-item">
+    <label>Initial Spread Index</label>
+    <input type="text" placeholder="Enter ISI (0 - 18.5)" name="ISI" required>
+  </div>
+  
+
+   
+    <div class="form-item">
+        <label>Classes (Fire/Not FIre)</label>
+        <input type="text" placeholder="Enter Classes (0,1)" name="Classes" required>
+    </div>
+    <div class="form-item">
+        <label for="">Region(Bejaia Region,Sidi-Bel Abbes Region)</label>
+        <input type="text" placeholder="Enter Region (0,1)" name="Region" required>
+    </div>
+
+    <button type="submit">Submit</button>
+
+    <h2> {{prediction_text}}</h2>
+
+    
+
+    </form>
+</body>
+</html>
